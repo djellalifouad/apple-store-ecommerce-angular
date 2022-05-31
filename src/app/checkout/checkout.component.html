@@ -1,0 +1,233 @@
+<div style="padding: 0px 70px">
+  <div class="py-5 text-center">
+    <h2>Checkout</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-4 order-md-2 mb-4">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Your Product</span>
+      </h4>
+      <ul class="list-group mb-3 sticky-top">
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">{{ productDetail.nom }}</h6>
+            <small class="text-muted">{{ productDetail.desc }}</small>
+          </div>
+          <span class="text-muted">{{ productDetail.price }}$</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Total</span>
+          <strong>{{ productDetail.price }}$ </strong>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-8 order-md-1">
+      <h4 class="mb-3">Billing address</h4>
+      <form class="needs-validation" [formGroup]="checkout">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName">First name</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="name"
+              [ngClass]="{ 'is-invalid': f['name'].errors }"
+            />
+            <div *ngIf="f['name'].errors && f['name'].touched">
+              <small class="text-muted">Please enter a valid name</small>
+              <div
+                *ngIf="f['name'].errors['required']"
+                class="invalid-feedback"
+                style="color: red"
+              >
+                ce champ est required
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="lastName">Last name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            formControlName="lastname"
+            [ngClass]="{ 'is-invalid': f['lastname'].errors }"
+          />
+          <div *ngIf="f['lastname'].errors && f['lastname'].touched">
+            <small class="text-muted">Please enter a valid lastname</small>
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="email">Email</label>
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            formControlName="email"
+            [ngClass]="{ 'is-invalid': f['email'].errors }"
+          />
+          <div *ngIf="f['email'].errors && f['email'].touched">
+            <small class="text-muted">Please enter a valid email</small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="address">Address</label>
+          <input
+            type="text"
+            class="form-control"
+            id="address"
+            formControlName="address"
+            [ngClass]="{ 'is-invalid': f['address'].errors }"
+          />
+          <div *ngIf="f['address'].errors && f['address'].touched">
+            <small class="text-muted">Please enter a valid address</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5 mb-3">
+            <label for="wilaya">Wilaya</label>
+            <select
+              class="custom-select d-block w-100"
+              id="wilayas"
+              formControlName="wilayas"
+              [ngClass]="{ 'is-invalid': f['wilayas'].errors }"
+            >
+              <option value="">Choose...</option>
+              <option value="1">Adrar</option>
+              <option value="2">Chlef</option>
+              <option value="3">Laghouat</option>
+              <option value="4">Oum El Bouaghi</option>
+              <option value="5">Batna</option>
+              <option value="6">Bejaia</option>
+              <option value="7">Biskra</option>
+              <option value="8">Bechar</option>
+              <option value="9">Blida</option>
+              <option value="10">Bouira</option>
+              <option value="11">Tamanrasset</option>
+              <option value="12">Tebessa</option>
+              <option value="13">Tlemcen</option>
+              <option value="14">Tiaret</option>
+              <option value="15">Tizi Ouzou</option>
+              <option value="16">Alger</option>
+              <option value="17">Djelfa</option>
+              <option value="18">Jijel</option>
+              <option value="19">Setif</option>
+              <option value="20">Saida</option>
+              <option value="21">Skikda</option>
+              <option value="22">Sidi Bel Abbes</option>
+              <option value="23">Annaba</option>
+              <option value="24">Guelma</option>
+              <option value="25">Constantine</option>
+              <option value="26">Medea</option>
+              <option value="27">Mostaganem</option>
+              <option value="28">MSila</option>
+              <option value="29">Mascara</option>
+              <option value="30">Ouargla</option>
+              <option value="31">Oran</option>
+              <option value="32">El Bayadh</option>
+              <option value="33">Illizi</option>
+              <option value="34">Bordj Bou Arreridj</option>
+              <option value="35">Boumerdes</option>
+              <option value="36">El Tarf</option>
+              <option value="37">Tindouf</option>
+              <option value="38">Tissemsilt</option>
+              <option value="39">El Oued</option>
+              <option value="40">Khenchela</option>
+              <option value="41">Souk Ahras</option>
+              <option value="42">Tipaza</option>
+              <option value="43">Mila</option>
+              <option value="44">Ain Defla</option>
+              <option value="45">Naama</option>
+              <option value="46">Ain Temouchent</option>
+              <option value="47">Ghardaia</option>
+              <option value="48">Relizane</option>
+            </select>
+            <div *ngIf="f['wilayas'].errors && f['wilayas'].touched">
+              <small class="text-muted">Please enter a valid wilaya</small>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="zip">Zip</label>
+            <input
+              type="text"
+              class="form-control"
+              id="zip"
+              formControlName="zip"
+              [ngClass]="{ 'is-invalid': f['zip'].errors }"
+            />
+            <div *ngIf="f['zip'].errors && f['cardNum'].touched">
+              <small class="text-muted">Please enter a valid zip</small>
+            </div>
+          </div>
+        </div>
+        <hr class="mb-4" />
+        <h4 class="mb-3">Payment</h4>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="cc-name">Name on card</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cc-name"
+              formControlName="nameCard"
+              [ngClass]="{ 'is-invalid': f['nameCard'].errors }"
+            />
+            <div *ngIf="f['nameCard'].errors && f['nameCard'].touched">
+              <small class="text-muted">Please enter a valid name</small>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="cc-number">Credit card number</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cc-number"
+              formControlName="cardNum"
+              [ngClass]="{ 'is-invalid': f['cardNum'].errors  }"
+            />
+            <div *ngIf="f['cardNum'].errors && f['cardNum'].touched">
+              <small class="text-muted">Please enter a valid card number</small>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 mb-3">
+            <label for="cc-expiration">Expiration</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="cc"
+              [ngClass]="{ 'is-invalid': f['cc'].errors }"
+            />
+            <div *ngIf="f['cc'].errors && f['cc'].touched">
+              <small class="text-muted">Please enter a valid cc</small>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="cc-cvv">CVV</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="cvv"
+              [ngClass]="{ 'is-invalid': f['cvv'].errors }"
+            />
+            <div *ngIf="f['cvv'].errors && f['cvv'].touched">
+              <small class="text-muted">Please enter a valid cvv</small>
+            </div>
+          </div>
+        </div>
+        <hr class="mb-4" />
+        <button
+          class="btn btn-primary btn-lg btn-block"
+          (click)="clickCheckOut()"
+          [disabled]="!checkout.valid"
+          type="submit"
+        >
+          Continue to checkout
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+
+<div class="card-group">
+  <div class="row">
+
+   <div *ngFor="let product of list" class="col-md-3 col-sm-1">
+     <div >
+         <div (click)="productClick(product._id);" class="card" style="margin: 10px;">
+    <img  with="130px" height="300px" class="card-img-top" src="{{product.image}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{product.nom}}</h5>
+      <p class="card-text">{{product.desc}}</p>
+      <p class="card-text"><small class="text-muted">{{product.createdAt | date : 'YYYY-MM-dd'}} </small></p>
+    </div>
+  </div>
+     </div>
+
+</div>
+
+
+</div>
+</div>
+
